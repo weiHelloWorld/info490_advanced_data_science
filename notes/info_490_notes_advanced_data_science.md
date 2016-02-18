@@ -274,10 +274,84 @@ INFO 490: Advanced Data Science
         - ref: http://fastml.com/intro-to-random-forests/
     - steps
         - randomly divide data into several datasets, and train multiple decision trees
-        - Each tree is grown to the largest extent possible and  there is no pruning
+        - Each tree is grown to the largest extent possible and there is no pruning
         - Predict new data by aggregating the predictions of the ntree trees (**majority votes for classification, average for regression**)
+    - tuning random forest
+        - the most important parameter is the number of trees
+            - usually, the more, the better, because the multitude of trees serves to **reduce variance**
+            - ref: http://fastml.com/what-is-better-gradient-boosted-trees-or-random-forest/
     - ref: http://www.analyticsvidhya.com/blog/2015/09/random-forest-algorithm-multiple-challenges/
 
 ### Lesson 3: Ensemble Techniques: Boosting
 
-- 
+- basic idea: build new better estimators based on previous estimators
+
+## Week 5: Introduction to Unsupervised Learning
+
+### Lesson 1: Introduction to Dimension Reduction
+
+- PCA
+    - basic idea
+        - given zero-mean (by shifting the center of data) data set $X = [x_1, x_2, ..., x_n]$, where $x_i = \left[x_{1i}, ..., x_{mi}\right]^T$, a **orthogonal transformation** $W$, let $Y = WX$, $Y$ is the transformed data. find $W$ such that sum of squares of the 1st component of y's reaches maximum, and sum of squares of 2nd component reaches its maximum after eliminating 1st component, and ...
+        - PCA does dimension reduction by ensuring that first few components **capture most of variance** of the data
+            - metric: fraction of explained variance
+    - PCA using `sklearn`
+        - get information of PCA transformation 
+            - `explained_variance_ratio_`
+            - `components_`: transformation coefficients
+        - reconstruction using first few componnets
+        ```python
+        pca = PCA(n_components, copy=True)
+        tx = pca.fit_transform(x)
+        hd.plot_numbers(pca.inverse_transform(tx)[0:10])
+        ```
+    - calculation of PCA
+        - calculate covariance matrix, and find its eigenvalues and eigenvectors
+        - diagonize the covariance matrix, sort all these components based on eigenvalues
+        - pick first few components to form a transformation matrix and do transformation
+    - note
+        - PCA is often used together with other machine learning techniques, as a **preprocessing** method to compress data
+        - scaling in one dimension of data may affect the PCA result, since it affects the covariance matrix
+    - ref
+        - http://sebastianraschka.com/Articles/2014_pca_step_by_step.html
+        - http://www.lauradhamilton.com/introduction-to-principal-component-analysis-pca
+
+### Lesson 2: Introduction to Clustering
+
+- introduction to clustering
+    - several clustering algorithms
+        - Connectivity based clustering (hierarchical clustering)
+        - Centroid-based clustering
+        - Distribution-based clustering
+        - Density-based clustering
+    - ref
+        - https://en.wikipedia.org/wiki/Cluster_analysis
+
+- K-means
+    - basic idea
+        - step 1 (initialization): choose the number of classes to be k, pick k centroids (say, randomly)
+        - step 2 (reassign points): assign every point to the cluster whose centroid is nearest to it
+        - step 3 (update centroid): calculate center of all points in the cluster, as its new centroid, go to step 2, repeat until converge
+    - properties
+        - convergence
+            - it is guaranteed to converge
+        - uniqueness
+            - the result may depend on the initial conditions, e.g. if we apply k-means with k = 4 to 3 clearly separate clusters, the result may be not unique
+    - ref
+        - http://www.naftaliharris.com/blog/visualizing-k-means-clustering/ (a very nice visualizaiton)
+
+- DBSCAN
+    - basic idea
+        - we choose two parameters, a radius epsilon, and number of minPoints n
+        - several concepts
+            - core point
+            - reachable (not a symmetric relation)
+            - density-connected (a symmetric relation)
+        - all mutually density-connected points form a cluster
+        - points that are not density-connected to any other point are **outliers**
+    - comparison with k-means
+        - see [wiki](https://en.wikipedia.org/wiki/DBSCAN)
+    - ref
+        - https://en.wikipedia.org/wiki/DBSCAN
+        - http://www.naftaliharris.com/blog/visualizing-dbscan-clustering/ (a nice visualization)
+
