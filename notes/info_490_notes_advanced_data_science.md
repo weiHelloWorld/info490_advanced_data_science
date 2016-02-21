@@ -355,3 +355,14 @@ INFO 490: Advanced Data Science
         - https://en.wikipedia.org/wiki/DBSCAN
         - http://www.naftaliharris.com/blog/visualizing-dbscan-clustering/ (a nice visualization)
 
+### Lesson 3: Density Estimation
+
+- ref
+    - https://en.wikipedia.org/wiki/Density_estimation
+    - http://ned.ipac.caltech.edu/level5/March02/Silverman/Silver_contents.html
+    - http://stanford.edu/~mwaskom/software/seaborn/tutorial/distributions.html
+    - http://www.lancs.ac.uk/~struijke/density/index.html
+
+## Week 6: Machine Learning Special Topics
+
+### Lesson 1: 
