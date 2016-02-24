@@ -365,4 +365,9 @@ INFO 490: Advanced Data Science
 
 ## Week 6: Machine Learning Special Topics
 
-### Lesson 1: 
+### Lesson 1: Introduction to Recommender Systems
+
+- reading: Recommender systems, Part 1: Introduction to approaches and algorithms
+    - ref: http://www.ibm.com/developerworks/library/os-recommender1/index.html
+    - basic approaches
+        - collaborative filtering
