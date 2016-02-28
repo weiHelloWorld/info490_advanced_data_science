@@ -367,7 +367,75 @@ INFO 490: Advanced Data Science
 
 ### Lesson 1: Introduction to Recommender Systems
 
+- basic idea
+    - find similar users using some metrics, e.g. [cosine similarity](https://en.wikipedia.org/wiki/Cosine_similarity)
+    - do recommendations based on the similar users
+
 - reading: Recommender systems, Part 1: Introduction to approaches and algorithms
     - ref: http://www.ibm.com/developerworks/library/os-recommender1/index.html
     - basic approaches
         - collaborative filtering
+        - content-based filtering
+        - hybrids
+    - algorithms of recommender systems
+    - challenges with recommender systems
+        - non-typical behavior
+        - scalability
+        - privacy-protection considerations
+
+### Lesson 2: Introduction to Anomaly Detection
+
+- basic idea
+    - visual analysis
+    - statistical analysis
+        - calculate mean/std, trimmed mean/std (which are less sensitive to outliers)
+    - cluster analysis
+        - we can use `DBSCAN` to find clusters, and identify noise points with `label = -1`
+    - classification analysis
+
+- ref
+    - https://en.wikipedia.org/wiki/Anomaly_detection
+    - http://www.itl.nist.gov/div898/handbook/eda/section3/eda35h.htm
+
+### Lesson 3: Introduction to Practical Concepts
+
+- feature scaling
+
+- feature selection
+    - motivation
+        - to reduce amount of data we need to process, one way is to apply dimension reduction techniques, e.g. PCA.  But when the raw data are too large (even for doing dimension reduction), it might be helpful to first select some of the features, before doing any processing.
+    - methods
+        - [recursive feature elimination](http://scikit-learn.org/stable/modules/feature_selection.html#recursive-feature-elimination)
+            - basic idea
+                - train the data with an external estimator
+                - eliminate the feature with smallest weight (related to the estimator)
+                - repeat until the desired number of features is reached
+        - [random forest classifier](http://scikit-learn.org/stable/modules/feature_selection.html#tree-based-feature-selection)
+            - basic idea
+                - build RFC by randomly select features for each tree, and RFC will compute the overall importance of each feature, which is used for feature selection 
+            - ref
+                - http://scikit-learn.org/stable/auto_examples/ensemble/plot_forest_importances.html#example-ensemble-plot-forest-importances-py
+                - http://scikit-learn.org/stable/modules/generated/sklearn.ensemble.RandomForestClassifier.html
+    - ref
+        - https://en.wikipedia.org/wiki/Feature_selection
+
+- pipeline
+    - package multiple machine learning techniques together, similar to Linux command line pipeline
+
+- cross validation
+    - several types
+        - `KFold`, `StratifiedKFold`, `LeaveOneOut`, `ShuffleSplit`
+    
+- grid search
+    - basic idea
+        - use `GridSearchCV` object to perform a grid search to tune **hyperparameters** (e.g. learning rate for neural network, `eps` and `min_samples` for DBSCAN) for a machine learning model
+        - ref
+            - http://scikit-learn.org/stable/modules/generated/sklearn.grid_search.GridSearchCV.html
+
+- validation/learning curves
+    - basic idea
+        - use `sklearn.learning_curve.validation_curve` to plot training score curve and validation score curve
+
+## Week 7: Introduction to Text Analysis
+
+### Lesson 1: Introduction to Text Analysis
