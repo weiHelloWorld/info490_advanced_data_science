@@ -245,8 +245,7 @@ INFO 490: Advanced Data Science
 ### Lesson 3: Naive Bayes
 
 - reading: sklearn documentation of Naive Bayes algorithm
-    - ref: http://scikit-learn.org/stable/modules/naive_bayes.html
-    - this is a very good resource for introduction to NB algorithm
+    - ref: http://scikit-learn.org/stable/modules/naive_bayes.html (a very good resource for introduction to NB algorithm)
 
 - reading: 6 easy steps to learn Naive Bayes algorithm
     - ref: http://www.analyticsvidhya.com/blog/2015/09/naive-bayes-explained/
@@ -439,3 +438,81 @@ INFO 490: Advanced Data Science
 ## Week 7: Introduction to Text Analysis
 
 ### Lesson 1: Introduction to Text Analysis
+
+- text analysis with `sklearn`
+    - use `CountVectorizer` to get tokens (features), and construct [bag of words](https://en.wikipedia.org/wiki/Bag-of-words_model)
+    - frequency analysis
+    - [document-term matrix](https://en.wikipedia.org/wiki/Document-term_matrix)
+
+- text analysis with `NLTK`
+
+- reading: the definite guide to natural language processing
+    - ref: https://blog.monkeylearn.com/the-definitive-guide-to-natural-language-processing/
+    - applications of NLP
+        - machine translation
+        - automatic summarization
+        - sentiment analysis
+            - goal: identify subjective information (e.g. an opinion or an emotional state) in texts
+            - a frequent kind: polarity detection
+        - text classification
+        - conversational agents
+    - how does machine understand text?
+        - understanding words
+            - identify the nature of each word: **Part-of-Speech (PoS) tagging**
+                - two commonly used approaches
+                    - symbolic (based on rules)
+                        - example: [Brill tagger](https://en.wikipedia.org/wiki/Brill_tagger)
+                    - statistical (based on machine learning)
+        - from words to structure
+        - getting the meaning of words
+            - [lexical semantics](https://en.wikipedia.org/wiki/Lexical_semantics)
+            - [word sense disambiguation](https://en.wikipedia.org/wiki/Word-sense_disambiguation)
+        - a word about pragmatics
+            - understand sentences based on context
+        - are all these analyses needed?
+            - no, depends on the application
+        - symbolic vs statistical
+            - symbolic: easier to understand and control, but expensive
+            - statistical: more efficient, but harder to interpret
+
+### Lesson 2: Introduction to Text Classification
+
+- text classification
+    - basic idea
+        - use Document-term matrix (i.e. the number of times each token appears) of the text and related tags to do training for a classifier (e.g. Naive Bayes classifier)
+    - classification with stop words
+        - stop words: common words with little useful information, e.g. a, the, in, of
+        - the training result may be improved when removing stop words in `CountVectorizer`
+    - TF-IFD
+        - motivation: previously we simply use **the number of times a token occurs** in a document, this may overemphasize tokens that generally occur across many documents (e.g. names or general concepts), to improve that, we use **tf-idf** to calculate how important a word is to a document in a corpus
+        - tf & idf
+            - tf: term frequency, shows how frequently a term appears in a document
+            - idf: inverse document frequency, if a term appears in many documents, we can assume that this term is not important
+        - in sklearn, we use `TfidfVectorizer()` to generate tf-idf values for classification
+        - ref
+            - https://en.wikipedia.org/wiki/Tf%E2%80%93idf
+            - http://scikit-learn.org/stable/modules/feature_extraction.html#tfidf-term-weighting
+            - http://blog.christianperone.com/2011/09/machine-learning-text-feature-extraction-tf-idf-part-i/
+    - text classification with other classifiers
+        - SVM
+        - SGD
+        - logistic regression
+    - sentiment analysis
+
+- ref
+    - https://en.wikipedia.org/wiki/Text_mining
+
+### Lesson 3: Introduction to Text Mining
+
+- text mining
+    - n-grams
+        - motivation: previous we are using "unigrams", and a sequence of more words may be more informative, this would improve classification power
+        - ref: https://en.wikipedia.org/wiki/N-gram
+    - stemming
+        - ref: https://en.wikipedia.org/wiki/Stemming
+    - lemmatisation
+        - similar to stemming, but with knowledge of context
+        - ref: https://en.wikipedia.org/wiki/Lemmatisation
+    - dimension reduction and feature selection
+
+## Week 8: 
