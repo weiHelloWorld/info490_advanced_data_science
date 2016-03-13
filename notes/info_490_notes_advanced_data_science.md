@@ -515,4 +515,44 @@ INFO 490: Advanced Data Science
         - ref: https://en.wikipedia.org/wiki/Lemmatisation
     - dimension reduction and feature selection
 
-## Week 8: 
+## Week 8: Introduction to Social Media
+
+### Lesson 1: Introduction to Social Media: Email
+
+- email and text classification
+    - structure of email
+    - spam email classification, and blind test
+
+- reading: Document Classification with scikit-learn
+    - ref: http://zacstewart.com/2015/04/28/document-classification-with-scikit-learn.html
+    - this is a good review of some concepts
+        - feature extraction
+        - pipelining
+        - cross-validation
+        - bags of words
+        - tf-idf
+
+### Lesson 2: Introduction to Social Media: Twitter
+
+- mining twitter data and do classification
+
+- ref
+    - https://en.wikipedia.org/wiki/Twitter
+    - http://online.wsj.com/public/resources/documents/TweetMetadata.pdf
+    - http://tweepy.readthedocs.org/en/v3.5.0/
+    - http://www.nltk.org/howto/twitter.html
+
+### Lesson 3: Introduction to Social Media: Web
+
+- mining web data
+    - webscraping with `BeautifulSoup`
+        - ref
+            - http://www.gregreda.com/2013/03/03/web-scraping-101-with-python/
+            - http://www.gregreda.com/2013/04/29/more-web-scraping-with-python/
+    - working with Javascript data
+
+## Week 9: Natural Language Processing
+
+### Lesson 1: Introduction to NLP: Basic Concepts
+
+- 
