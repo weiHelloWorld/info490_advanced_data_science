@@ -551,8 +551,44 @@ INFO 490: Advanced Data Science
             - http://www.gregreda.com/2013/04/29/more-web-scraping-with-python/
     - working with Javascript data
 
-## Week 9: Natural Language Processing
+## Week 9: Introduction to Natural Language Processing
 
-### Lesson 1: Introduction to NLP: Basic Concepts
+### Lesson 1: Basic Concepts
+
+- introduction to NLP
+    - intro
+        - previously we use simple tokenization (word counts, tf-idf, etc) to do text analysis, now we need to combine semantic information of the text to do natural language processing
+    - tokenization by sentences/words/etc using `nltk`
+        - `sent_tokenize()`, `word_tokenize()`, `WhitespaceTokenizer`, `WordPunctTokenizer`
+    - collocations
+        - use `nltk.collocations` to find collocations, and we can measure the importance of collocations using **pointwise mutual information** (which is likelihood of words occurring together)
+        - we may also apply filters to collocations results
+    - tagging
+        - previously we use "bag-of-words" model, which lost information about the difference between two meanings of a specific word.  **tagging** is used to solve this issue by adding **information about context or the grammatical nature (noun or verb) of a word**
+        - types of tagging
+            - [part-of-speech tagging](https://en.wikipedia.org/wiki/Part-of-speech_tagging)
+            - [named entity recognition](https://en.wikipedia.org/wiki/Named-entity_recognition)
+        - linking tags
+        - tagged text extraction
+
+### Lesson 2: Topic Modeling
+
+- introduction to topic modeling
+    - basic idea
+        - clustering based on content
+    - clustering with non-negative matrix factorization (NMF)
+        - algorithm: given a non-negative m-by-n matrix V, and value r (where $r << m, r << n$), find a m-by-r matrix W and r-by-n matrix H, to minimize $|V-WH|^2$
+        - ref
+            - https://en.wikipedia.org/wiki/Non-negative_matrix_factorization#Background (this is a nice example of explaining how it works for topic modeling)
+    - latent Dirichlet allocation
+    - topic modeling with Gensim
+
+- ref
+    - https://en.wikipedia.org/wiki/Topic_model
+    - http://journalofdigitalhumanities.org/2-1/topic-modeling-a-basic-introduction-by-megan-r-brett/
+    - http://journalofdigitalhumanities.org/2-1/topic-modeling-and-digital-humanities-by-david-m-blei/
+    - http://blog.echen.me/2011/08/22/introduction-to-latent-dirichlet-allocation/
+
+### Lesson 3: Semantic Analysis
 
 - 
