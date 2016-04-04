@@ -591,4 +591,29 @@ INFO 490: Advanced Data Science
 
 ### Lesson 3: Semantic Analysis
 
+## Week 10: Network Analysis
+
+### Lesson 1: Graph Concepts
+
+- ref
+    - https://en.wikipedia.org/wiki/Graph_(abstract_data_type)
+    - https://en.wikipedia.org/wiki/Adjacency_matrix
+    - https://en.wikipedia.org/wiki/Incidence_matrix
+
+### Lesson 2: Graph Analysis
+
+- introduction to graph analysis
+    - graph operations
+    - graph generators
+    - graph I/O
+    - graph analysis
+
+- graph traversal
+    - ref: https://en.wikipedia.org/wiki/Graph_traversal
+
+- graph as a data structure and its implementation in Python
+    - ref: http://www.python-course.eu/graphs_python.php
+
+### Lesson 3: Social Media
+
 - 
