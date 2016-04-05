@@ -616,4 +616,7 @@ INFO 490: Advanced Data Science
 
 ### Lesson 3: Social Media
 
-- 
+- ref
+    - https://en.wikipedia.org/wiki/Social_network_analysis
+    - http://www.orgnet.com/sna.html
+    - 
