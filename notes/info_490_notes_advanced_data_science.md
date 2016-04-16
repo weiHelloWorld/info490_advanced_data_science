@@ -619,4 +619,113 @@ INFO 490: Advanced Data Science
 - ref
     - https://en.wikipedia.org/wiki/Social_network_analysis
     - http://www.orgnet.com/sna.html
-    - 
+    
+## Week 11: Probabilistic Programming
+
+### Lesson 1: Introduction to Bayesian Modeling
+
+- Bayesian analysis using `pymc3` library
+    - basic idea
+        - given prior and data, we could use two approaches to do model fitting
+            - maximum a posteriori (MAP) methods
+                - find the optimal point (MAP point) in parameter space using optimization methods
+            - sampling methods
+                - basic idea: **sample the posterior** in parameter space using MCMC techniques
+                    - note that we sample the parameters based on prior distribution, and find the probability that is posterior
+                - trace analysis
+                    - **trace** will be generated from a chain of sampled parameter values, and we could do some analysis such as:
+                        - posterior sample distribution
+                        - autocorrelation
+                    - note that the traces may take a while to settle down to most likely values, this part is called **burn-in period**, we need to discard this part either manually or use `find_MAP()` to find a good point as the starting point for sampling
+    - ref
+        - http://pymc-devs.github.io/pymc3/getting_started/
+        - http://blog.applied.ai/bayesian-inference-with-pymc3-part-1/
+        - http://nbviewer.jupyter.org/github/markdregan/Bayesian-Modelling-in-Python/blob/master/Section%201.%20Estimating%20model%20parameters.ipynb
+        - http://nbviewer.jupyter.org/github/markdregan/Bayesian-Modelling-in-Python/blob/master/Section%202.%20Model%20checking.ipynb
+
+- Markov chain Monte Carlo methods
+    - basic idea
+        - construct a Markov chain such that when we iterate through this chain for many steps, we get a reasonable sample set of a specific probability distribution
+    - some algorithms
+        - Metropolis-Hastings algorithm
+            - ref: https://en.wikipedia.org/wiki/Metropolis%E2%80%93Hastings_algorithm#Intuition
+        - Gibbs sampling
+            - ref: https://en.wikipedia.org/wiki/Gibbs_sampling
+    - ref 
+        - https://en.wikipedia.org/wiki/Markov_chain_Monte_Carlo
+        - http://stats.stackexchange.com/questions/165/how-would-you-explain-markov-chain-monte-carlo-mcmc-to-a-layperson
+
+### Lesson 2: Introduction to Hierarchical Modeling
+
+- basic idea
+    - given multiple sets of data (of the same type) which follow the same model (e.g. linear model) with different parameter values (e.g. different slopes and intercepts), we may use three ways to model them
+        - completely pooled model
+            - combine all datasets together to fit a set of glabal parameters for all datasets
+            ![](./figures/f6.png)
+        - unpooled/non-hierarchical model
+            - treat them as completely independent datasets, and fit the model to get parameters for each dataset separately.
+            ![](./figures/f7.png)
+        - hierarchical/partially pooled/multilevel model
+            - treat the parameters as data generated from a higher-level model, for example, we can assume all these slopes in the linear models are drawn from a normal distribution and then find the "hyperparameter" for the normal distribution
+            - advantage
+                - it takes the correlation of these models into account, and for some real problems this might be an important factor
+            - shrinkage effect
+                - the parameters of these model will be "pulled" towards the group mean, as a result of the common group distribution
+            ![](./figures/f8.png)
+
+- ref
+    - http://pymc-devs.github.io/pymc3/GLM-hierarchical/
+
+### Lesson 3: Introduction to General Linear Models
+
+- TODO
+
+## Week 12: Cloud Computing
+
+### Lesson 1: Introduction to Hadoop
+
+- ref
+    - https://aws.amazon.com/what-is-cloud-computing/
+    - https://aws.amazon.com/types-of-cloud-computing/
+    - https://en.wikipedia.org/wiki/Apache_Hadoop
+
+### Lesson 2: Introduction to MapReduce
+
+- introduction
+    - map/reduce phases
+        - map phase
+            - do computation on data in parallel, this could be fast when using HDFS, where data are widely distributed
+            - identifies keys and associates with them a value
+        - reduce phase
+            - collect keys and aggregate the values
+
+- ref
+    - http://www.tutorialspoint.com/map_reduce/map_reduce_introduction.htm
+    - http://www.tutorialspoint.com/map_reduce/map_reduce_algorithm.htm
+
+### Lesson 3: Introduction to Pig
+
+- introduction
+    - Pig is a tool in the Hadoop ecosystem to simplify the creation of MapReduce programs.  The script is written in **Pig Latin**, a dataflow language.
+        - Pig Latin vs traditional procedural and object-oriented programming languages
+            - Pig Latin focuses on data flow rather than control flow, there are no `if` statements or `for` loops.
+        - Pig Latin vs SQL
+            - SQL is a query language, it allows users to form queries, but not how it is done.  In Pig Latin, users need to describe how it is done.
+        - Pig Latin vs MapReduce
+            - Pig Latin is higher-level, it is much easier to write and maintain with Pig Latin than MapReduce.
+    - Pig example: word count
+    ```Pig
+    Lines = LOAD 'book.txt' AS (Line:chararray) ;
+    Words = FOREACH Lines GENERATE FLATTEN (TOKENIZE (Line)) AS Word ;
+    Groups = GROUP Words BY Word ;
+    Counts = FOREACH Groups GENERATE group, COUNT (Words) ;
+    Results = ORDER Counts BY $1 DESC ;
+    Top_Results = LIMIT Results 10 ;
+    STORE Results INTO 'top_words' ;
+    DUMP Top_Results ;
+    ```
+
+- ref
+    - http://chimera.labs.oreilly.com/books/1234000001811/ch01.html#use_cases
+    - https://en.wikipedia.org/wiki/Pig_(programming_tool)
+    
