@@ -728,4 +728,31 @@ INFO 490: Advanced Data Science
 - ref
     - http://chimera.labs.oreilly.com/books/1234000001811/ch01.html#use_cases
     - https://en.wikipedia.org/wiki/Pig_(programming_tool)
-    
+
+## Week 13: NoSQL DataStores
+
+### Lesson 1: Introduction to Document-Oriented Databases
+
+- introduction to MongoDB
+    - MongoDB is **schema-less**, there are no tables or schemas.  but it also supports some of traditional database operations such as inserting data, querying data, updating data, and deleting data
+
+- ref
+    - http://www.w3resource.com/mongodb/nosql.php (a nice introduction to NoSQL, including motivation, history, pros/cons, etc, and also some intro to scalibility issues)
+    - https://en.wikipedia.org/wiki/Document-oriented_database (intro to document-oriented databases, including comparison with traditional relational databases)
+    - http://www.w3resource.com/mongodb/introduction-mongodb.php
+    - http://api.mongodb.org/python/current/tutorial.html (using MongoDB with Python)
+
+### Lesson 2: Introduction to Column-Oriented Databases
+
+- ref
+    - https://en.wikipedia.org/wiki/Column-oriented_DBMS (compare column-oriented with traditional row-oriended databases)
+    - https://academy.datastax.com/resources/brief-introduction-apache-cassandra
+    - https://datastax.github.io/python-driver/getting_started.html
+
+### Lesson 3: Introduction to Graph Databases
+
+- ref
+    - https://en.wikipedia.org/wiki/Graph_database
+    - http://www.tutorialspoint.com/neo4j/neo4j_overview.htm
+    - https://www.safaribooksonline.com/blog/2013/07/23/using-neo4j-from-python/
+
