@@ -678,8 +678,6 @@ INFO 490: Advanced Data Science
 
 ### Lesson 3: Introduction to General Linear Models
 
-- TODO
-
 ## Week 12: Cloud Computing
 
 ### Lesson 1: Introduction to Hadoop
@@ -756,3 +754,44 @@ INFO 490: Advanced Data Science
     - http://www.tutorialspoint.com/neo4j/neo4j_overview.htm
     - https://www.safaribooksonline.com/blog/2013/07/23/using-neo4j-from-python/
 
+## Week 14: Introduction to Spark
+
+### Lesson 1: Introduction to Spark
+
+- introduction
+    - Spark is a cluster computing system that leverages Hadoop technologies like HDFS for high performance storage and Yarn for cluster management.
+    - Spark uses an **immutable** (read-only) data structure called **Resilient Distributed Dataset (RDD)**.  In Spark, data processing tasks can be transformation or actions, and these tasks can be **pipelined** for efficiency. Each transformation creates a new RDD, but since Spark uses **lazy evaluation**, the transformations are not executed until an action is invoked.
+    - an data processing example:
+    ```Python
+    sc = SparkContext(conf=myconf)
+    (sc
+     .parallelize(range(50))
+     .map(lambda x: x + 1)
+     .filter(lambda x: (x % 5) == 0)
+     .collect())
+    ```
+
+- ref
+    - https://en.wikipedia.org/wiki/Apache_Spark
+    - http://www.tutorialspoint.com/spark_sql/spark_introduction.htm
+    - http://www.tutorialspoint.com/spark_sql/spark_rdd.htm
+    - https://spark.apache.org/docs/latest/quick-start.html
+
+### Lesson 2: Introduction to Spark: DataFrames
+
+- ref
+    - https://databricks.com/blog/2015/02/17/introducing-dataframes-in-spark-for-large-scale-data-science.html
+
+### Lesson 3: Introduction to Spark: Machine Learning
+
+- ref
+    - https://spark.apache.org/docs/latest/mllib-statistics.html
+    - https://spark.apache.org/docs/latest/mllib-classification-regression.html
+    - https://spark.apache.org/docs/latest/mllib-clustering.html
+    - https://spark.apache.org/docs/latest/mllib-feature-extraction.html
+
+## Week 15: Introduction to Deep Learning
+
+### Lesson 1: Introduction to Deep Learning
+
+- 
